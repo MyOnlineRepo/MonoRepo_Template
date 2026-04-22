@@ -11,7 +11,7 @@ Geplante Basis:
 - Containerisierung: Docker und Docker Compose
 - Kommunikation und Eventing: MassTransit mit RabbitMQ
 - Backend-Tests: xUnit
-- Frontend-Tests: noch offen
+- Frontend-Tests: Vitest und Testing Library, E2E später bei Bedarf
 
 ## Arbeitsstil
 

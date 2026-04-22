@@ -88,7 +88,6 @@ Die lokale Umgebung soll reproduzierbar sein und die wichtigsten Bausteine einfa
 ## Noch offen
 
 - konkrete erste Service-Zuschnitte
-- Frontend-Teststrategie
 - gemeinsamer lokaler Startablauf
 - gemeinsame Konventionen für Konfiguration, Logging und Observability
 - mögliche Shared Libraries oder gemeinsame Contracts

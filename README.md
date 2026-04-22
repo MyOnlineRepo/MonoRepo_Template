@@ -9,7 +9,7 @@ Pragmatisches Monorepo für eine Microservice-Anwendung mit Client, lokal sauber
 - Containerisierung: Docker und Docker Compose
 - Service-Kommunikation und Eventing: MassTransit mit RabbitMQ
 - Backend-Tests: xUnit
-- Frontend-Tests: noch offen
+- Frontend-Tests: Vitest und Testing Library, E2E später bei Bedarf
 - Codex-Steuerung: globale und projektbezogene `AGENTS.md` sowie `.codex/`
 
 ## Zielbild
@@ -45,5 +45,4 @@ Geplant ist die lokale Orchestrierung über Docker Compose.
 - Angular-Client anbinden
 - lokale Compose-Umgebung aufsetzen
 - Teststruktur für Backend definieren
-- Frontend-Teststrategie festlegen
 - Architektur und Entwicklungsabläufe in `.codex/` ergänzen
