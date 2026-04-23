@@ -2,27 +2,59 @@
 
 Pragmatisches Monorepo für einen modularen Monolithen mit Client, lokal sauber lauffähig und so aufgebaut, dass es später kontrolliert weiterentwickelt und bei Bedarf in mehrere Services aufgeteilt werden kann.
 
-## Geplante Basis
+## Aktueller Stand
 
-- Backend: .NET 10
-- Frontend: Angular 21
-- Containerisierung: Docker und Docker Compose
-- Backend-Tests: xUnit
-- Frontend-Tests: Vitest und Testing Library, E2E später bei Bedarf
+- Backend: `.NET 10` Web API unter `backend/Dotnet_Organizer`
+- Frontend: `Angular 21` Anwendung unter `frontend/Angular_Organizer`
+- Containerisierung: Dockerfiles pro Projekt und zentrale `docker-compose`-Dateien
+- Backend-Tests: noch nicht angelegt
+- Frontend-Tests: Angular-Standardsetup mit Vitest
 - Codex-Steuerung: globale und projektbezogene `AGENTS.md` sowie `.codex/`
 
-## Zielbild
+## Struktur
 
-Das Repository soll einfach startbar sein, nicht overengineered wirken und trotzdem eine saubere Grundlage für einen modularen Backend-Monolithen, einen Client, Tests, Skripte und Dokumentation bieten.
-
-## Geplante Struktur
-
-- `backend/`: modularer Backend-Monolith und API
-- `frontend/`: Client-Anwendung
-- `tests/`: automatisierte Tests
-- `scripts/`: Hilfsskripte für Entwicklung und Betrieb
+- `backend/`: Backend-Projekte und APIs
+- `frontend/`: Client-Anwendungen
 - `docs/`: ergänzende Projektdokumentation
+- `scripts/`: Hilfsskripte für Entwicklung und Betrieb
+- `infrastructure/`: vorbereitete Infrastrukturordner
 - `.codex/`: Arbeitsdokumente, Vorlagen und agentenbezogene Hilfen
+
+## Enthaltene Projekte
+
+- `backend/Dotnet_Organizer`: minimale ASP.NET Core Web API auf `.NET 10`
+- `frontend/Angular_Organizer`: Angular-Workspace mit Standard-App
+
+## Lokale Entwicklung
+
+### Ohne Docker
+
+Backend:
+
+```powershell
+dotnet run --project .\backend\Dotnet_Organizer
+```
+
+Frontend:
+
+```powershell
+cd .\frontend\Angular_Organizer
+npm install
+npm start
+```
+
+### Mit Docker Compose
+
+Start:
+
+```powershell
+docker compose up --build
+```
+
+Danach erreichbar:
+
+- Frontend: `http://localhost:4200`
+- Backend: `http://localhost:8080/weatherforecast`
 
 ## Architekturprinzipien
 
@@ -32,35 +64,20 @@ Das Repository soll einfach startbar sein, nicht overengineered wirken und trotz
 - Infrastruktur und lokale Entwicklung einfach startbar halten
 - Das Repo so aufbauen, dass neue Backend-Module später sauber ergänzt werden können
 
-## Lokale Entwicklung
-
-Die lokale Entwicklungsumgebung soll so ausgelegt sein, dass zentrale Bausteine wie Backend, Client und unterstützende Infrastruktur reproduzierbar gestartet werden können.
-
-Geplant ist die lokale Orchestrierung über Docker Compose.
-
 ## Nächste sinnvolle Ausbaustufen
 
-1. **Repository-Grundstruktur anlegen**
-   - Ordner `backend/`, `frontend/`, `tests/`, `scripts/` und `docs/` erzeugen
-   - Platzhalter-README pro Bereich ergänzen, damit die Struktur sofort nachvollziehbar ist
+1. **Backend fachlich ausbauen**
+   - Health-Endpunkt und erste echte Domänenlogik ergänzen
+   - Modulstruktur im Backend sauber abgrenzen
 
-2. **Ersten Backend-Monolithen erstellen (.NET 10)**
-   - Minimale API mit Health-Endpunkt aufsetzen
-   - Basis-Konfiguration für Logging und lokale Einstellungen ergänzen
-   - Erste fachliche Modulstruktur sauber abgrenzen
+2. **Frontend an das Backend anbinden**
+   - Erste Feature-Seite statt Standard-Startseite umsetzen
+   - API-Aufruf gegen das Backend integrieren
 
-3. **Angular-Client initial anbinden**
-   - Angular-Workspace in `frontend/` erstellen
-   - Erste Seite mit API-Health-Check gegen das Backend integrieren
+3. **Testbasis ergänzen**
+   - xUnit-Testprojekt für das Backend anlegen
+   - Frontend-Tests gezielt für erste Features erweitern
 
-4. **Lokale Docker-Compose-Umgebung aufsetzen**
-   - Container für Backend und Frontend definieren
-   - Einheitliche Startbefehle für die lokale Entwicklung dokumentieren
-
-5. **Testbasis für Backend und Frontend einrichten**
-   - xUnit-Testprojekt für das erste Backend-Modul anlegen
-   - Vitest + Testing Library für den Client initial konfigurieren
-
-6. **Dokumentation und Entwicklungsabläufe konsolidieren**
-   - Architekturüberblick in `.codex/` konkretisieren
-   - Lokale Setup-, Test- und Review-Abläufe zentral dokumentieren
+4. **Docker-Setup weiter schärfen**
+   - sinnvolle Dev-/Prod-Unterschiede definieren
+   - einheitliche Start- und Build-Abläufe dokumentieren
