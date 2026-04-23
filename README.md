@@ -41,8 +41,30 @@ Geplant ist die lokale Orchestrierung über Docker Compose.
 
 ## Nächste sinnvolle Ausbaustufen
 
-- ersten Backend-Service anlegen
-- Angular-Client anbinden
-- lokale Compose-Umgebung aufsetzen
-- Teststruktur für Backend definieren
-- Architektur und Entwicklungsabläufe in `.codex/` ergänzen
+1. **Repository-Grundstruktur anlegen**
+   - Ordner `services/`, `frontend/`, `tests/`, `scripts/` und `docs/` erzeugen
+   - Platzhalter-README pro Bereich ergänzen, damit die Struktur sofort nachvollziehbar ist
+
+2. **Ersten Backend-Service erstellen (.NET 10)**
+   - Minimalen API-Service mit Health-Endpunkt aufsetzen
+   - Basis-Konfiguration für Logging und lokale Einstellungen ergänzen
+
+3. **Angular-Client initial anbinden**
+   - Angular-Workspace in `frontend/` erstellen
+   - Erste Seite mit API-Health-Check gegen den Backend-Service integrieren
+
+4. **Lokale Docker-Compose-Umgebung aufsetzen**
+   - Services für Backend, Frontend und RabbitMQ definieren
+   - Einheitliche Startbefehle für die lokale Entwicklung dokumentieren
+
+5. **Testbasis für Backend und Frontend einrichten**
+   - xUnit-Testprojekt für den ersten Service anlegen
+   - Vitest + Testing Library für den Client initial konfigurieren
+
+6. **Service-Kommunikation vorbereiten (MassTransit + RabbitMQ)**
+   - Gemeinsame Messaging-Konventionen definieren (Namen, Queues, Events)
+   - Erstes Beispiel-Event zwischen Komponenten lokal lauffähig machen
+
+7. **Dokumentation und Entwicklungsabläufe konsolidieren**
+   - Architekturüberblick in `.codex/` konkretisieren
+   - Lokale Setup-, Test- und Review-Abläufe zentral dokumentieren
