@@ -1,12 +1,12 @@
 FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
 WORKDIR /src
 
-COPY ["backend/Dotnet_Organizer/Presentation/Presentation.csproj", "backend/Dotnet_Organizer/Presentation/"]
-COPY ["backend/Dotnet_Organizer/Shared/Shared.csproj", "backend/Dotnet_Organizer/Shared/"]
-RUN dotnet restore "backend/Dotnet_Organizer/Presentation/Presentation.csproj"
+COPY ["backend/Dotnet_Organizer/Presentation.csproj", "backend/Dotnet_Organizer/"]
+COPY ["backend/Dotnet_Organizer/Shared.csproj", "backend/Dotnet_Organizer/"]
+RUN dotnet restore "backend/Dotnet_Organizer/Presentation.csproj"
 
 COPY . .
-WORKDIR /src/backend/Dotnet_Organizer/Presentation
+WORKDIR /src/backend/Dotnet_Organizer
 RUN dotnet publish "Presentation.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 FROM mcr.microsoft.com/dotnet/aspnet:10.0 AS final

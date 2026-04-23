@@ -22,8 +22,26 @@ Pragmatisches Monorepo für einen modularen Monolithen mit Client, lokal sauber 
 
 ## Enthaltene Projekte
 
-- `backend/Dotnet_Organizer`: Backend-Solution mit `Presentation` und `Shared`
+- `backend/Dotnet_Organizer`: Backend-Solution mit `Presentation.csproj` und `Shared.csproj` direkt unter der Solution
 - `frontend/Angular_Organizer`: Angular-Workspace mit Standard-App
+
+## Backend-Struktur
+
+Allgemeine Projektstruktur im Backend:
+
+- `Presentation`: HTTP-Einstiegspunkt, API-Konfiguration und Controller
+- `Shared/Application`: gemeinsame anwendungsnahe Bausteine
+- `Shared/Domain`: gemeinsame fachliche Kernbausteine
+- `Shared/Infrastructure`: gemeinsame technische Infrastrukturbausteine
+
+Aktueller Startpunkt im Organizer:
+
+- `backend/Dotnet_Organizer/Presentation.csproj`
+- `backend/Dotnet_Organizer/Shared.csproj`
+- `backend/Dotnet_Organizer/Presentation/Controllers`
+- `backend/Dotnet_Organizer/Shared/Application`
+- `backend/Dotnet_Organizer/Shared/Domain`
+- `backend/Dotnet_Organizer/Shared/Infrastructure`
 
 ## Lokale Entwicklung
 
@@ -32,7 +50,7 @@ Pragmatisches Monorepo für einen modularen Monolithen mit Client, lokal sauber 
 Backend:
 
 ```powershell
-dotnet run --project .\backend\Dotnet_Organizer\Presentation\Presentation.csproj
+dotnet run --project .\backend\Dotnet_Organizer\Presentation.csproj
 ```
 
 Frontend:

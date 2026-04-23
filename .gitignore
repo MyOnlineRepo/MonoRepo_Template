@@ -1,5 +1,6 @@
 
 .repo_git/
 .vs/
+**/*.csproj.user
 **/bin/
 **/obj/

@@ -38,11 +38,13 @@ Das Backend startet als einzelner .NET-Web-API-Monolith mit klar getrennten fach
 
 Innerhalb des Monolithen ist eine modulare Trennung nach fachlichen Features vorgesehen. So bleibt die Struktur lokal gut handhabbar und kann später bei Bedarf sauber in getrennte Services weiterentwickelt werden.
 
-Der Monolith kann dabei zum Beispiel aus folgenden Projekten bestehen:
+Der Monolith kann dabei zum Beispiel aus folgenden Projekten und Bereichen bestehen:
 
-- `Presentation`: HTTP-Endpunkte, API-Konfiguration, Middleware, Swagger und technische Einstiegspunkte
+- `Presentation`: HTTP-Endpunkte, API-Konfiguration, Middleware, Swagger, Controller und technische Einstiegspunkte
 - `Features.<FeatureName>`: fachliche Module wie `Sales`, inklusive Commands, Queries, Handler, Validierung und Fachlogik
-- `Shared`: kleine gemeinsame Basis für generische Typen, technische Hilfen und ausgewählte gemeinsame Abstraktionen
+- `Shared/Application`: gemeinsame anwendungsnahe Bausteine
+- `Shared/Domain`: gemeinsame fachliche Kernbausteine
+- `Shared/Infrastructure`: gemeinsame technische Infrastrukturbausteine
 
 Für diese Trennung gelten folgende Regeln:
 
@@ -52,6 +54,12 @@ Für diese Trennung gelten folgende Regeln:
 - Feature-Projekte dürfen auf `Shared` zugreifen
 - Feature-Projekte dürfen nicht direkt auf andere Feature-Projekte zugreifen
 - `Shared` darf keine fachliche Logik einzelner Features enthalten
+
+Für die physische Projektstruktur im Backend gilt zusätzlich:
+
+- die Solution und die zugehörigen `.csproj`-Dateien liegen auf derselben Ebene
+- `Presentation` enthält auf oberster Ebene den Einstiegspunkt und einen `Controllers`-Ordner
+- `Shared` ist in `Application`, `Domain` und `Infrastructure` unterteilt
 
 Innerhalb eines Features ist ein pragmatischer CQRS-Ansatz vorgesehen. Commands und Queries dürfen sauber getrennt werden, solange die Lösung lokal verständlich bleibt und nicht unnötig komplex wird.
 
