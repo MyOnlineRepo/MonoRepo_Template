@@ -22,7 +22,7 @@ Pragmatisches Monorepo für einen modularen Monolithen mit Client, lokal sauber 
 
 ## Enthaltene Projekte
 
-- `backend/Dotnet_Organizer`: minimale ASP.NET Core Web API auf `.NET 10`
+- `backend/Dotnet_Organizer`: Backend-Solution mit `Presentation` und `Shared`
 - `frontend/Angular_Organizer`: Angular-Workspace mit Standard-App
 
 ## Lokale Entwicklung
@@ -32,7 +32,7 @@ Pragmatisches Monorepo für einen modularen Monolithen mit Client, lokal sauber 
 Backend:
 
 ```powershell
-dotnet run --project .\backend\Dotnet_Organizer
+dotnet run --project .\backend\Dotnet_Organizer\Presentation\Presentation.csproj
 ```
 
 Frontend:
