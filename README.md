@@ -43,6 +43,22 @@ Aktueller Startpunkt im Organizer:
 - `backend/Dotnet_Organizer/Shared/Domain`
 - `backend/Dotnet_Organizer/Shared/Infrastructure`
 
+## Frontend-Struktur
+
+Allgemeine Projektstruktur im Frontend:
+
+- Features werden feature-nah aufgebaut
+- Komponenten liegen immer in einem eigenen Ordner
+- auch Index-Seiten liegen in einem eigenen Ordner, zum Beispiel `sales-index/`
+- pro Feature sind mindestens `components/`, `models/` und `services/` vorgesehen
+- gemeinsamer Feature-State wird bevorzugt mit `NgRx Signal Store` umgesetzt
+
+Aktueller Startpunkt im Organizer:
+
+- `frontend/Angular_Organizer/src/app/features/sales/components/sales-index`
+- `frontend/Angular_Organizer/src/app/features/sales/models`
+- `frontend/Angular_Organizer/src/app/features/sales/services`
+
 ## Lokale Entwicklung
 
 ### Ohne Docker

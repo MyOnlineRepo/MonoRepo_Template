@@ -74,6 +74,13 @@ Ein typisches Angular-Feature, zum Beispiel `sales/`, soll in sich nachvollziehb
 - einen `models/`-Ordner
 - einen `services/`-Ordner im Feature selbst
 
+Für die physische Struktur im Frontend gilt zusätzlich:
+
+- Komponenten liegen immer in einem eigenen Ordner
+- auch Index-Komponenten liegen in einem eigenen Ordner
+- der Komponentenordner soll den konkreten Zweck tragen, zum Beispiel `sales-index/`
+- ein Feature kann damit zum Beispiel `components/sales-index/`, `models/` und `services/` enthalten
+
 Für Services gilt:
 
 - `http`-Services für API-Zugriffe
@@ -82,7 +89,13 @@ Für Services gilt:
 
 Signals sind der bevorzugte Standard für lokalen und abgeleiteten State im Frontend.
 
-NgRx ist nicht automatisch vorgesehen. Wenn ein Feature mehr gemeinsamen oder komplexen State benötigt, ist NgRx Signal Store eine mögliche spätere Erweiterung.
+Wenn ein Feature mehr gemeinsamen oder komplexen State benötigt, ist `NgRx Signal Store` der bevorzugte Ansatz.
+
+Konkret bedeutet das:
+
+- einfacher lokaler UI-State kann direkt mit Angular Signals in der Komponente bleiben
+- gemeinsamer Feature-State soll bevorzugt über einen feature-nahen `Signal Store` organisiert werden
+- klassische globale Store-Strukturen sind nicht automatisch der Standard
 
 Der Angular-Ansatz soll sauber, lokal verständlich und eher im Sinne von pragmatischer Clean-Coding-Struktur umgesetzt werden, nicht als starre oder überladene Frontend-Architektur.
 

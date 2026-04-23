@@ -1,0 +1,47 @@
+<section class="sales-index">
+  <header class="hero">
+    <div>
+      <p class="eyebrow">Sales Index</p>
+      <h1>Vertriebsueberblick mit Signal Store</h1>
+      <p class="intro">
+        Das erste Feature ist bereits nach der Zielstruktur organisiert:
+        Komponenten als Ordner, feature-nahe Models und ein NgRx Signal Store
+        fuer lokalen Zustand.
+      </p>
+    </div>
+
+    <div class="summary-card">
+      <span>Pipeline gesamt</span>
+      <strong>{{ store.totalVolume() | currency:'EUR':'symbol':'1.0-0':'de' }}</strong>
+      <small>{{ store.openCount() }} offene Chancen</small>
+    </div>
+  </header>
+
+  <nav class="filters" aria-label="Statusfilter">
+    @for (filter of filters; track filter) {
+      <button
+        type="button"
+        class="filter-button"
+        [class.active]="store.selectedStatus() === filter"
+        (click)="store.selectStatus(filter)"
+      >
+        {{ filter }}
+      </button>
+    }
+  </nav>
+
+  <div class="sales-grid">
+    @for (item of store.visibleItems(); track item.id) {
+      <article class="sale-card">
+        <div class="sale-head">
+          <h2>{{ item.customer }}</h2>
+          <span class="status">{{ item.status }}</span>
+        </div>
+
+        <p class="amount">
+          {{ item.amount | currency:'EUR':'symbol':'1.0-0':'de' }}
+        </p>
+      </article>
+    }
+  </div>
+</section>
