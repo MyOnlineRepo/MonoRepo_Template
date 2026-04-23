@@ -9,7 +9,7 @@ export const routes: Routes = [
   {
     path: 'sales',
     loadComponent: () =>
-      import('./features/sales/components/sales-index/sales-index').then(
+      import('./sales/sales-index/sales-index').then(
         (module) => module.SalesIndexComponent
       )
   }

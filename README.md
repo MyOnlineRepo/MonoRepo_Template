@@ -47,17 +47,22 @@ Aktueller Startpunkt im Organizer:
 
 Allgemeine Projektstruktur im Frontend:
 
-- Features werden feature-nah aufgebaut
+- Features werden direkt unter `src/` aufgebaut
+- es gibt keinen zusätzlichen `app`-Ordner als Strukturvorgabe
+- es gibt keinen zusätzlichen `features`-Sammelordner
 - Komponenten liegen immer in einem eigenen Ordner
 - auch Index-Seiten liegen in einem eigenen Ordner, zum Beispiel `sales-index/`
-- pro Feature sind mindestens `components/`, `models/` und `services/` vorgesehen
+- unter einem Feature gibt es keinen zusätzlichen `components`-Sammelordner
+- pro Feature sind mindestens Komponentenordner, `models/` und `services/` vorgesehen
+- Styles werden als `scss`-Dateien geführt
+- `*.spec.ts`-Dateien werden aktuell nicht mitgeführt
 - gemeinsamer Feature-State wird bevorzugt mit `NgRx Signal Store` umgesetzt
 
 Aktueller Startpunkt im Organizer:
 
-- `frontend/Angular_Organizer/src/app/features/sales/components/sales-index`
-- `frontend/Angular_Organizer/src/app/features/sales/models`
-- `frontend/Angular_Organizer/src/app/features/sales/services`
+- `frontend/Angular_Organizer/src/sales/sales-index`
+- `frontend/Angular_Organizer/src/sales/models`
+- `frontend/Angular_Organizer/src/sales/services`
 
 ## Lokale Entwicklung
 

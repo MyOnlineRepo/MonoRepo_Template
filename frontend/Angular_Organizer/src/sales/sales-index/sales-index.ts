@@ -1,14 +1,14 @@
 import { CurrencyPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 
-import { SalesStore } from '../../services/sales.store';
+import { SalesStore } from '../services/sales.store';
 
 @Component({
   selector: 'app-sales-index',
   imports: [CurrencyPipe],
   providers: [SalesStore],
   templateUrl: './sales-index.html',
-  styleUrl: './sales-index.css',
+  styleUrl: './sales-index.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SalesIndexComponent {

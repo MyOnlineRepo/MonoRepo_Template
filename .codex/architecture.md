@@ -76,10 +76,16 @@ Ein typisches Angular-Feature, zum Beispiel `sales/`, soll in sich nachvollziehb
 
 Für die physische Struktur im Frontend gilt zusätzlich:
 
+- unter `src/` gibt es keinen zusätzlichen `app`-Ordner als Architekturgrenze
+- unter `src/` gibt es keinen allgemeinen `features`-Sammelordner
 - Komponenten liegen immer in einem eigenen Ordner
 - auch Index-Komponenten liegen in einem eigenen Ordner
 - der Komponentenordner soll den konkreten Zweck tragen, zum Beispiel `sales-index/`
-- ein Feature kann damit zum Beispiel `components/sales-index/`, `models/` und `services/` enthalten
+- ein Feature liegt direkt unter `src/`, zum Beispiel `src/sales/`
+- unter einem Feature gibt es keinen zusätzlichen allgemeinen `components`-Sammelordner
+- ein Feature kann damit zum Beispiel `src/sales/sales-index/`, `src/sales/models/` und `src/sales/services/` enthalten
+- Styles werden als `scss`-Dateien geführt
+- Testdateien vom Typ `*.spec.ts` werden aktuell nicht mitgeführt
 
 Für Services gilt:
 
