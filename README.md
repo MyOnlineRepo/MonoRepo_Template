@@ -1,24 +1,23 @@
 # Monorepo Template
 
-Pragmatisches Monorepo für eine Microservice-Anwendung mit Client, lokal sauber lauffähig und so aufgebaut, dass es später kontrolliert zu einer echten Microservice-Struktur wachsen kann.
+Pragmatisches Monorepo für einen modularen Monolithen mit Client, lokal sauber lauffähig und so aufgebaut, dass es später kontrolliert weiterentwickelt und bei Bedarf in mehrere Services aufgeteilt werden kann.
 
 ## Geplante Basis
 
 - Backend: .NET 10
 - Frontend: Angular 21
 - Containerisierung: Docker und Docker Compose
-- Service-Kommunikation und Eventing: MassTransit mit RabbitMQ
 - Backend-Tests: xUnit
 - Frontend-Tests: Vitest und Testing Library, E2E später bei Bedarf
 - Codex-Steuerung: globale und projektbezogene `AGENTS.md` sowie `.codex/`
 
 ## Zielbild
 
-Das Repository soll einfach startbar sein, nicht overengineered wirken und trotzdem eine saubere Grundlage für mehrere Services, einen Client, Tests, Skripte und Dokumentation bieten.
+Das Repository soll einfach startbar sein, nicht overengineered wirken und trotzdem eine saubere Grundlage für einen modularen Backend-Monolithen, einen Client, Tests, Skripte und Dokumentation bieten.
 
 ## Geplante Struktur
 
-- `services/`: Backend-Services und APIs
+- `backend/`: modularer Backend-Monolith und API
 - `frontend/`: Client-Anwendung
 - `tests/`: automatisierte Tests
 - `scripts/`: Hilfsskripte für Entwicklung und Betrieb
@@ -31,40 +30,37 @@ Das Repository soll einfach startbar sein, nicht overengineered wirken und trotz
 - Bestehende Struktur und Konventionen beibehalten
 - Änderungen möglichst lokal und nachvollziehbar halten
 - Infrastruktur und lokale Entwicklung einfach startbar halten
-- Das Repo so aufbauen, dass neue Services später sauber ergänzt werden können
+- Das Repo so aufbauen, dass neue Backend-Module später sauber ergänzt werden können
 
 ## Lokale Entwicklung
 
-Die lokale Entwicklungsumgebung soll so ausgelegt sein, dass zentrale Bausteine wie Services, Client, RabbitMQ und unterstützende Infrastruktur reproduzierbar gestartet werden können.
+Die lokale Entwicklungsumgebung soll so ausgelegt sein, dass zentrale Bausteine wie Backend, Client und unterstützende Infrastruktur reproduzierbar gestartet werden können.
 
 Geplant ist die lokale Orchestrierung über Docker Compose.
 
 ## Nächste sinnvolle Ausbaustufen
 
 1. **Repository-Grundstruktur anlegen**
-   - Ordner `services/`, `frontend/`, `tests/`, `scripts/` und `docs/` erzeugen
+   - Ordner `backend/`, `frontend/`, `tests/`, `scripts/` und `docs/` erzeugen
    - Platzhalter-README pro Bereich ergänzen, damit die Struktur sofort nachvollziehbar ist
 
-2. **Ersten Backend-Service erstellen (.NET 10)**
-   - Minimalen API-Service mit Health-Endpunkt aufsetzen
+2. **Ersten Backend-Monolithen erstellen (.NET 10)**
+   - Minimale API mit Health-Endpunkt aufsetzen
    - Basis-Konfiguration für Logging und lokale Einstellungen ergänzen
+   - Erste fachliche Modulstruktur sauber abgrenzen
 
 3. **Angular-Client initial anbinden**
    - Angular-Workspace in `frontend/` erstellen
-   - Erste Seite mit API-Health-Check gegen den Backend-Service integrieren
+   - Erste Seite mit API-Health-Check gegen das Backend integrieren
 
 4. **Lokale Docker-Compose-Umgebung aufsetzen**
-   - Services für Backend, Frontend und RabbitMQ definieren
+   - Container für Backend und Frontend definieren
    - Einheitliche Startbefehle für die lokale Entwicklung dokumentieren
 
 5. **Testbasis für Backend und Frontend einrichten**
-   - xUnit-Testprojekt für den ersten Service anlegen
+   - xUnit-Testprojekt für das erste Backend-Modul anlegen
    - Vitest + Testing Library für den Client initial konfigurieren
 
-6. **Service-Kommunikation vorbereiten (MassTransit + RabbitMQ)**
-   - Gemeinsame Messaging-Konventionen definieren (Namen, Queues, Events)
-   - Erstes Beispiel-Event zwischen Komponenten lokal lauffähig machen
-
-7. **Dokumentation und Entwicklungsabläufe konsolidieren**
+6. **Dokumentation und Entwicklungsabläufe konsolidieren**
    - Architekturüberblick in `.codex/` konkretisieren
    - Lokale Setup-, Test- und Review-Abläufe zentral dokumentieren

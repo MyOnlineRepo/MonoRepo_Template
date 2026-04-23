@@ -6,20 +6,19 @@ Dieses Dokument beschreibt die Zielrichtung des Monorepos in kompakter Form. Es 
 
 ## Architekturidee
 
-Das Repository ist die pragmatische Grundlage für eine Microservice-Anwendung mit Client. Es soll lokal einfach startbar sein, nicht unnötig verkompliziert werden und später kontrolliert zu mehreren klar getrennten Services wachsen können.
+Das Repository ist die pragmatische Grundlage für einen modularen Monolithen mit Client. Es soll lokal einfach startbar sein, nicht unnötig verkompliziert werden und später kontrolliert weiterentwickelt oder bei echtem Bedarf in mehrere klar getrennte Services aufgeteilt werden können.
 
 ## Technische Basis
 
 - Backend: .NET 10
 - Frontend: Angular 21
 - Containerisierung: Docker und Docker Compose
-- Messaging und Eventing: MassTransit mit RabbitMQ
 - Backend-Tests: xUnit
 - Frontend-Tests: Vitest und Testing Library, E2E später bei Bedarf
 
 ## Geplante Hauptbereiche
 
-- `services/`: fachliche Backend-Services, APIs und spätere servicebezogene Kommunikation
+- `backend/`: fachlicher modularer Monolith, API und gemeinsame technische Einstiegspunkte
 - `frontend/`: Client-Anwendung
 - `tests/`: automatisierte Tests
 - `scripts/`: lokale Hilfsskripte, Setup- und Betriebsunterstützung
@@ -29,17 +28,17 @@ Das Repository ist die pragmatische Grundlage für eine Microservice-Anwendung m
 
 - Einfach starten, statt früh zu verallgemeinern
 - Lokale Entwicklungsfähigkeit hat hohen Stellenwert
-- Klare Trennung von Services, Client, Tests, Skripten und Doku
+- Klare Trennung von Backend, Client, Tests, Skripten und Doku
 - Neue Strukturen nur bei echtem Bedarf einführen
 - Wachstum ermöglichen, ohne den aktuellen Stand zu overengineeren
 
 ## Backend-Sicht
 
-Jeder Backend-Baustein ist grundsätzlich ein eigenständiger .NET-Web-API-Service.
+Das Backend startet als einzelner .NET-Web-API-Monolith mit klar getrennten fachlichen Modulen.
 
-Innerhalb eines Services ist eine modulare Trennung nach fachlichen Features vorgesehen. So bleibt die Struktur lokal gut handhabbar und kann später bei Bedarf sauber in getrennte Microservices weiterentwickelt werden.
+Innerhalb des Monolithen ist eine modulare Trennung nach fachlichen Features vorgesehen. So bleibt die Struktur lokal gut handhabbar und kann später bei Bedarf sauber in getrennte Services weiterentwickelt werden.
 
-Ein Service kann dabei zum Beispiel aus folgenden Projekten bestehen:
+Der Monolith kann dabei zum Beispiel aus folgenden Projekten bestehen:
 
 - `Presentation`: HTTP-Endpunkte, API-Konfiguration, Middleware, Swagger und technische Einstiegspunkte
 - `Features.<FeatureName>`: fachliche Module wie `Sales`, inklusive Commands, Queries, Handler, Validierung und Fachlogik
@@ -56,8 +55,6 @@ Für diese Trennung gelten folgende Regeln:
 
 Innerhalb eines Features ist ein pragmatischer CQRS-Ansatz vorgesehen. Commands und Queries dürfen sauber getrennt werden, solange die Lösung lokal verständlich bleibt und nicht unnötig komplex wird.
 
-MassTransit und RabbitMQ sind für serviceübergreifende Kommunikation und Events gedacht, nicht als Ersatz für einfache interne Anwendungslogik.
-
 ## Frontend-Sicht
 
 Das Frontend folgt einem klaren, pragmatischen Feature-Schnitt statt unnötiger Architektur-Schichten.
@@ -67,7 +64,7 @@ Ein typisches Angular-Feature, zum Beispiel `sales/`, soll in sich nachvollziehb
 - Routing
 - eine Index-Seite als klaren Einstiegspunkt
 - einen `models/`-Ordner
-- einen `services/`-Ordner
+- einen `services/`-Ordner im Feature selbst
 
 Für Services gilt:
 
@@ -83,11 +80,11 @@ Der Angular-Ansatz soll sauber, lokal verständlich und eher im Sinne von pragma
 
 ## Lokale Entwicklung
 
-Die lokale Umgebung soll reproduzierbar sein und die wichtigsten Bausteine einfach starten können. Docker Compose ist dafür die vorgesehene Grundlage, insbesondere für Infrastruktur wie RabbitMQ und für eine später wachsende Zahl von Services.
+Die lokale Umgebung soll reproduzierbar sein und die wichtigsten Bausteine einfach starten können. Docker Compose ist dafür die vorgesehene Grundlage, insbesondere für Backend, Frontend und unterstützende Infrastruktur.
 
 ## Noch offen
 
-- konkrete erste Service-Zuschnitte
+- konkrete erste Modulzuschnitte im Backend
 - gemeinsamer lokaler Startablauf
 - gemeinsame Konventionen für Konfiguration, Logging und Observability
 - mögliche Shared Libraries oder gemeinsame Contracts

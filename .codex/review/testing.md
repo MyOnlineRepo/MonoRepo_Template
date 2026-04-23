@@ -47,7 +47,7 @@ Typische sinnvolle Checks:
 
 ## Infrastruktur und lokale Umgebung
 
-Für Änderungen an Docker, Docker Compose, RabbitMQ-Anbindung oder lokalen Startabläufen gilt:
+Für Änderungen an Docker, Docker Compose, Backend-Infrastruktur oder lokalen Startabläufen gilt:
 
 - Änderungen klein halten
 - Startbarkeit lokal prüfen, wenn der Scope es erfordert
@@ -66,6 +66,6 @@ Nach Änderungen soll kurz dokumentiert werden:
 
 - welche Backend-Logik standardmäßig als testpflichtig gilt, zum Beispiel Handler, Validatoren und Domänenregeln
 - wie viel Frontend-Logik über Tests und wie viel zunächst über manuelle Validierung abgesichert wird
-- ab wann Integrations-Tests pro Service sinnvoll werden
+- ab wann Integrations-Tests pro Backend-Modul sinnvoll werden
 - welche Mindestchecks später in CI verpflichtend sein sollen
 - ob und wann E2E-Tests für kritische Frontend-Flows ergänzt werden

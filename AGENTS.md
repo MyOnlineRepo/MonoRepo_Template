@@ -2,14 +2,13 @@
 
 ## Kontext
 
-Dieses Repository ist ein pragmatisches Monorepo für eine Microservice-Anwendung mit Client. Es soll lokal sauber lauffähig sein und ohne Overengineering so aufgebaut werden, dass es später kontrolliert zu einer echten Microservice-Struktur wachsen kann.
+Dieses Repository ist ein pragmatisches Monorepo für einen modularen Monolithen mit Client. Es soll lokal sauber lauffähig sein und ohne Overengineering so aufgebaut werden, dass es später kontrolliert weiterentwickelt und bei echtem Bedarf auch in mehrere Services aufgeteilt werden kann.
 
 Geplante Basis:
 
 - Backend: .NET 10
 - Frontend: Angular 21
 - Containerisierung: Docker und Docker Compose
-- Kommunikation und Eventing: MassTransit mit RabbitMQ
 - Backend-Tests: xUnit
 - Frontend-Tests: Vitest und Testing Library, E2E später bei Bedarf
 
@@ -31,10 +30,10 @@ Geplante Basis:
 
 ## Monorepo-Leitlinien
 
-- Neue Services, Clients, Tests, Skripte und Dokumentation sollen klar voneinander getrennt sein.
+- Backend, Client, Tests, Skripte und Dokumentation sollen klar voneinander getrennt sein.
 - Gemeinsame Patterns sind sinnvoll, aber nur wenn sie echten Nutzen bringen.
 - Lokale Entwicklung und Docker-Compose-Startbarkeit haben hohen Stellenwert.
-- Architekturentscheidungen sollen das spätere Wachstum zu mehreren Services erleichtern, ohne den aktuellen Stand unnötig zu verkomplizieren.
+- Architekturentscheidungen sollen modulare Backend-Grenzen sauber halten, ohne den aktuellen Stand unnötig zu verkomplizieren.
 
 ## Weitere Orientierung
 
